@@ -3,11 +3,22 @@ name := "quandl4s"
 
 version := "0.1"
 
+organization := "alepro"
+
 scalaVersion := "2.13.4"
 
 scalacOptions ++= Seq(
   "-Xlog-implicits" // Show more detail on why some implicits are not applicable.
 )
+
+// github
+githubOwner := "alepro"
+githubRepository := "quandl4s"
+
+// setup GitHub token in ~/.gitconfig
+// [github]
+//  token = TOKEN_DATA
+githubTokenSource := TokenSource.GitConfig("github.token")
 
 val http4sVersion = "0.21.15"
 

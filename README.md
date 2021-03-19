@@ -3,6 +3,15 @@ Scala client for Quandl.com APIs
 
 
 ## How to use ?
+#### Importing lib
+ In your `build.sbt` add the following: 
+
+```sbt
+externalResolvers += "GitHub quandl4s" at "https://maven.pkg.github.com/alepro/quandl4s"
+
+libraryDependencies += "alepro" %% "quandl4s" % "0.1"
+```
+
 There are several already defined APIs in `alepro.quandl4s.client.apis` such as
 
 [AAII Investor Sentiment Data](https://www.quandl.com/data/AAII/AAII_SENTIMENT-AAII-Investor-Sentiment-Data)

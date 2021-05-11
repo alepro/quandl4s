@@ -9,7 +9,7 @@ Scala client for Quandl.com APIs
 ```sbt
 externalResolvers += "GitHub quandl4s" at "https://maven.pkg.github.com/alepro/quandl4s"
 
-libraryDependencies += "alepro" %% "quandl4s" % "0.1"
+libraryDependencies += "alepro" %% "quandl4s" % "0.2"
 ```
 
 There are several already defined APIs in `alepro.quandl4s.client.apis` such as
@@ -29,6 +29,9 @@ There are several already defined APIs in `alepro.quandl4s.client.apis` such as
 [United States Valuation Index Data - Individual](https://www.quandl.com/data/YALE/US_CONF_INDEX_VAL_INDIV-Stock-Market-Confidence-Indices-United-States-Valuation-Index-Data-Individual)
 
 [Treasury Yield Curve Rates](https://www.quandl.com/data/USTREASURY-US-Treasury)
+
+[S&P 500 Volatility Index VIX Futures VX1](https://www.quandl.com/data/CHRIS/CBOE_VX1)
+as well as VX2, ... VX9
 
 For example, you can get all items from `Treasury Yield Curve Rates` 
 ```scala

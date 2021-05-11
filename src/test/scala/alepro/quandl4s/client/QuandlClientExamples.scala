@@ -1,5 +1,6 @@
 package alepro.quandl4s.client
 
+import alepro.quandl4s.client.apis.VixIndex._
 import alepro.quandl4s.client.apis._
 import alepro.quandl4s.csv.CSVParser
 import org.scalatest.{Matchers, WordSpec}
@@ -102,12 +103,42 @@ class QuandlClientExamples extends WordSpec with Matchers {
     }
   }
 
-  "QuandlClient TreasuryYields Spread" should {
+  "QuandlClient TreasuryYields Spread" ignore {
     "calculate latest 10Y2Y spread" in {
       getTreasury10Y2YSpread(_.latest).unsafeRunSync().foreach(_ foreach println)
     }
     "calculate 30 days 10Y2Y spread" in {
       getTreasury10Y2YSpread(_.withLimit(30)).unsafeRunSync().foreach(_ foreach println)
+    }
+  }
+
+  "QuandlClient VIX futures" ignore {
+    "get latest VX1 future value" in {
+      getVixDataset(VX1)(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest VX2 future value" in {
+      getVixDataset(VX2)(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest VX3 future value" in {
+      getVixDataset(VX3)(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest VX4 future value" in {
+      getVixDataset(VX4)(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest VX5 future value" in {
+      getVixDataset(VX5)(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest VX6 future value" in {
+      getVixDataset(VX6)(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest VX7 future value" in {
+      getVixDataset(VX7)(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest VX8 future value" in {
+      getVixDataset(VX8)(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest VX9 future value" in {
+      getVixDataset(VX9)(_.latest).unsafeRunSync().foreach(_ foreach println)
     }
   }
 

@@ -193,4 +193,29 @@ object apis {
 
   }
 
+  /*
+   * S&P 500 Volatility Index VIX Futures
+   * Contracts: VX1, VX2, ... VX9
+   * https://www.quandl.com/data/CHRIS/CBOE_VX1
+   */
+  case class VixValue(date: LocalDate, open: Double, high: Double, low: Double, close: Double,
+                      settle: Double, change: Double, totalVolume: Double, efp: Double, prevInterest: Double)
+
+
+  object VixIndex extends Enumeration {
+    type  SP500VX = Value
+    val VX1, VX2, VX3, VX4, VX5, VX6, VX7, VX8, VX9 = Value
+  }
+
+  // Base requests
+  def vixValueRequest(index: VixIndex.Value)(implicit apiKey: ApiKey): DatasetRequest =
+    DatasetRequest(s"CHRIS/CBOE_$index", apiKey.key)
+
+  // Basic way to build request and get results as VXValue list.
+  def getVixDataset(index: VixIndex.Value)(f: DatasetRequest => DatasetRequest = identity)
+  (implicit apiKey: ApiKey): IO[Either[String, List[VixValue]]] = {
+    implicit val parser = CSVParser[VixValue]
+    f(vixValueRequest(index)).mapTo[VixValue]
+  }
+
 }

@@ -2,6 +2,8 @@ package alepro.quandl4s.client
 
 import alepro.quandl4s.csv.CSVParser
 import cats.effect.IO
+import shapeless.syntax.singleton.mkSingletonOps
+import shapeless.{::, HList, HNil}
 
 import java.time.LocalDate
 
@@ -217,5 +219,66 @@ object apis {
     implicit val parser = CSVParser[VixValue]
     f(vixValueRequest(index)).mapTo[VixValue]
   }
+
+  /**
+   * Consumer Price Index - USA (RATEINF/CPI_USA)
+   */
+
+    // Model
+    case class ConsumerPriceIndex(date: LocalDate, value: Double)
+
+  // Base requests
+  def cpiUSARequest(implicit apiKey: ApiKey): DatasetRequest =
+    DatasetRequest("RATEINF/CPI_USA", apiKey.key)
+
+  def getCpiUSA(f: DatasetRequest => DatasetRequest = identity)
+                   (implicit apiKey: ApiKey): IO[Either[String, List[ConsumerPriceIndex]]] = {
+    implicit val parser = CSVParser[ConsumerPriceIndex]
+    f(cpiUSARequest).mapTo[ConsumerPriceIndex]
+  }
+
+  /**
+   * Inflation YOY - USA (RATEINF/INFLATION_USA)
+   */
+
+  // Model
+  case class InflationYOY(date: LocalDate, value: Double)
+
+  // Base requests
+  def inflationYoyUSARequest(implicit apiKey: ApiKey): DatasetRequest =
+    DatasetRequest("RATEINF/INFLATION_USA", apiKey.key)
+
+  def getInflationYoyUSA(f: DatasetRequest => DatasetRequest = identity)
+               (implicit apiKey: ApiKey): IO[Either[String, List[InflationYOY]]] = {
+    implicit val parser = CSVParser[InflationYOY]
+    f(inflationYoyUSARequest).mapTo[InflationYOY]
+  }
+
+  /**
+   * Expected Inflation  (FRBC/EXIN)
+   */
+
+  // Model
+  case class ExpectedInflation(date: LocalDate,
+                               ei1: Double, ei2: Double, ei3: Double, ei4: Double, ei5: Double, ei6: Double,
+                               ei7: Double, ei8: Double, ei9: Double, ei10: Double, ei11: Double, ei12: Double,
+                               ei13: Double, ei14: Double, ei15: Double, ei16: Double, ei17: Double, ei18: Double,
+                               ei19: Double, ei20: Double, ei21: Double, ei22: Double, ei23: Double, ei24: Double,
+                               ei25: Double, ei26: Double, ei27: Double, ei28: Double, ei29: Double, ei30: Double
+                              )
+
+  // Base requests
+  def expectedInflationRequest(implicit apiKey: ApiKey): DatasetRequest =
+    DatasetRequest("FRBC/EXIN", apiKey.key)
+
+  def getExpectedInflation(f: DatasetRequest => DatasetRequest = identity)
+                        (implicit apiKey: ApiKey): IO[Either[String, List[ExpectedInflation]]] = {
+    implicit val parser = CSVParser[ExpectedInflation]
+    f(expectedInflationRequest).mapTo[ExpectedInflation]
+  }
+
+
+
+
 
 }

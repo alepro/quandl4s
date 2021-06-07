@@ -142,4 +142,31 @@ class QuandlClientExamples extends WordSpec with Matchers {
     }
   }
 
+  "QuandlClient.ConsumerPriceIndex" ignore {
+    "get all data from RATEINF/CPI_USA (Consumer Price Index)" in {
+      getCpiUSA().unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest record from RATEINF/CPI_USA (Consumer Price Index)" in {
+      getCpiUSA(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+  }
+
+  "QuandlClient.InflationYOY" ignore {
+    "get all data from RATEINF/INFLATION_USA (Inflation YOY)" in {
+      getInflationYoyUSA().unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest record from RATEINF/INFLATION_USA (Inflation YOY)" in {
+      getInflationYoyUSA(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+  }
+
+  "QuandlClient.ExpectedInflation" ignore {
+    "get all data from FRBC/EXIN (Expected Inflation)" in {
+      getExpectedInflation().unsafeRunSync().foreach(_ foreach println)
+    }
+    "get latest record from FRBC/EXIN (Expected Inflation)" in {
+      getExpectedInflation(_.latest).unsafeRunSync().foreach(_ foreach println)
+    }
+  }
+
 }

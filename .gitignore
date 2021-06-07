@@ -2,4 +2,5 @@
 /project/target/
 /target/
 /project/project/target/
+/.bsp/sbt.json
 /notes.txt

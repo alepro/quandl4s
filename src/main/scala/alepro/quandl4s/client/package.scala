@@ -5,10 +5,10 @@ import alepro.quandl4s.client.QuandlOrder.QuandlOrder
 import alepro.quandl4s.client.QuandlTransform.QuandlTransform
 import alepro.quandl4s.client.quandlRequest.baseCase
 import alepro.quandl4s.csv.CSVParser
-import cats.effect.{ContextShift, IO, Resource, Timer}
+import cats.effect.{IO, Resource}
 import cats.implicits._
 import org.http4s.client.Client
-import org.http4s.client.blaze.BlazeClientBuilder
+import org.http4s.blaze.client.BlazeClientBuilder
 import org.http4s.{QueryParamEncoder, Uri}
 
 import java.time.LocalDate
@@ -113,8 +113,6 @@ package object client {
   }
 
   object Implicits {
-    implicit val cs: ContextShift[IO] = IO.contextShift(global)
-    implicit val timer: Timer[IO] = IO.timer(global)
     implicit val clientResource: Resource[IO, Client[IO]] = BlazeClientBuilder[IO](global).resource
   }
 

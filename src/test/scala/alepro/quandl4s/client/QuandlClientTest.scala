@@ -2,6 +2,7 @@ package alepro.quandl4s.client
 
 import alepro.quandl4s.client.apis.InvestorSentimentData
 import alepro.quandl4s.csv.CSVParser
+import cats.effect.unsafe.implicits.global
 import cats.effect.{IO, Resource}
 import cats.implicits.catsSyntaxOptionId
 import fs2.Stream

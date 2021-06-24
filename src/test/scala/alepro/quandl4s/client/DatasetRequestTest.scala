@@ -2,6 +2,7 @@ package alepro.quandl4s.client
 
 import alepro.quandl4s.client.QuandlCollapse.WEEKLY
 import alepro.quandl4s.client.QuandlOrder.ASC
+import cats.effect.unsafe.implicits.global
 import org.scalatest.{Matchers, WordSpec}
 
 import java.time.LocalDate

@@ -1,7 +1,7 @@
 
 name := "quandl4s"
 
-version := "0.3"
+version := "0.3.1"
 
 organization := "alepro"
 
@@ -20,7 +20,7 @@ githubRepository := "quandl4s"
 //  token = TOKEN_DATA
 githubTokenSource := TokenSource.GitConfig("github.token")
 
-val http4sVersion = "0.21.15"
+val http4sVersion = "0.23.0-RC1"
 
 val http4sDeps = Seq(
   "org.http4s" %% "http4s-dsl" % http4sVersion,
@@ -28,7 +28,7 @@ val http4sDeps = Seq(
 )
 
 libraryDependencies += "com.chuusai" %% "shapeless" % "2.3.3"
-libraryDependencies += "org.typelevel" %% "cats-core" % "2.3.1"
+libraryDependencies += "org.typelevel" %% "cats-core" % "2.6.1"
 libraryDependencies ++= http4sDeps
 
 

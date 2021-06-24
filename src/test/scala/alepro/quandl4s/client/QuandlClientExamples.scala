@@ -3,6 +3,7 @@ package alepro.quandl4s.client
 import alepro.quandl4s.client.apis.VixIndex._
 import alepro.quandl4s.client.apis._
 import alepro.quandl4s.csv.CSVParser
+import cats.effect.unsafe.implicits.global
 import org.scalatest.{Matchers, WordSpec}
 
 import java.time.LocalDate
